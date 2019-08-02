@@ -13,3 +13,6 @@ colnames(train) <- features[,1]
 mergedData <- merge(test, train, all = TRUE)
 
 colnames(mergedData) <- features
+
+#Filter out non mean and std data
+meanAndStd <- grepl("mean|std", names(mergedData), fixed = FALSE)
