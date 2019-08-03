@@ -5,13 +5,17 @@ features <- read.csv("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/featu
 test <- read.csv("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/test/X_test.txt", sep = "", header = FALSE)
 colnames(test) <- features[,1]
 actName <- read.csv("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/test/y_test.txt", sep = "\n", header = FALSE)
+subject <- read.csv("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/test/subject_test.txt", sep = "\n", header = FALSE)
 test[,"Activity Names"] <- actName
+test[,"Subject"] <- subject
 
 #Read in the train data and assign the columns to the features
 train <- read.csv("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/train/X_train.txt", sep = "", header = FALSE)
 colnames(train) <- features[,1]
 actName <- read.csv("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/train/y_train.txt", sep = "\n", header = FALSE)
+subject <- read.csv("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/train/subject_train.txt", sep = "\n", header = FALSE)
 train[,"Activity Names"] <- actName
+train[,"Subject"] <- subject
 
 #Now must merge the two data sets
 mergedData <- merge(test, train, all = TRUE)
@@ -19,7 +23,7 @@ mergedData <- merge(test, train, all = TRUE)
 #colnames(mergedData) <- features
 
 #Filter out non mean and std data
-meanAndStd <- grepl("mean|std|Activity Names", names(mergedData), fixed = FALSE)
+meanAndStd <- grepl("mean|std|Activity Names|Subject", names(mergedData), fixed = FALSE)
 
 filteredData <- mergedData[,meanAndStd]
 
@@ -31,5 +35,7 @@ activities <- gsub("3", "Walking Downstairs", activities)
 activities <- gsub("4", "Sitting", activities)
 activities <- gsub("5", "Standing", activities)
 activities <- gsub("6", "Laying", activities)
-
 filteredData[,"Activity Names"] <- activities
+
+#Now we have filtered data, must make second dataset
+
