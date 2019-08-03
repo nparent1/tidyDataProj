@@ -43,4 +43,5 @@ tidyDataSupplement <- aggregate(filteredData[,1:78], by = list(filteredData$`Sub
 mergedTidyData <- merge(tidyData, tidyDataSupplement, all = TRUE)
 colnames(mergedTidyData)[1] <- "Subject/Activity"
 
-write.table(mergedTidyData, file = "tidyData.csv", row.names = FALSE, sep = ",")
+tidyDataSorted <- mergedTidyData[order(as.numeric(mergedTidyData$`Subject/Activity`)),]
+write.table(tidyDataSorted, file = "tidyData.csv", row.names = FALSE, sep = ",")
