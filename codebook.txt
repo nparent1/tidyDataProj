@@ -1,0 +1,164 @@
+tidyDataProj Codebook:
+
+The following lists the variables, their class, their observation count, and a brief description
+Description of X, Y, and Z of repsective variables are equivalent
+
+
+	Subject/Activity
+character	36	These represent either a subject or activity which the average of each of the following variables has been calculated
+	1 tBodyAcc-mean()-X
+numeric	36		
+	2 tBodyAcc-mean()-Y
+numeric	36		
+	3 tBodyAcc-mean()-Z
+numeric	36	Represents the mean of the total body acceleration estimated in standard gravity units
+	4 tBodyAcc-std()-X
+numeric	36		
+	5 tBodyAcc-std()-Y
+numeric	36		
+	6 tBodyAcc-std()-Z
+numeric	36	The standard deviation of the total body acceleration measurement	
+	41 tGravityAcc-mean()-X
+numeric	36	
+	42 tGravityAcc-mean()-Y
+numeric	36		
+	43 tGravityAcc-mean()-Z
+numeric	36	Mean of the total gravity acceleration, in standard gravity units
+	44 tGravityAcc-std()-X
+numeric	36	
+	45 tGravityAcc-std()-Y
+numeric	36		
+	46 tGravityAcc-std()-Z
+numeric	36	The standard deviation of the total gravity acceleration	
+	81 tBodyAccJerk-mean()-X
+numeric	36	
+	82 tBodyAccJerk-mean()-Y
+numeric	36		
+	83 tBodyAccJerk-mean()-Z
+numeric	36		The mean of the total body acceleration jerk, in meters per second cubed
+	84 tBodyAccJerk-std()-X
+numeric	36	
+	85 tBodyAccJerk-std()-Y
+numeric	36	
+	86 tBodyAccJerk-std()-Z
+numeric	36	Standard deviation of the total body acceleration jerk in meters per second cubed
+	121 tBodyGyro-mean()-X
+numeric	36	
+	122 tBodyGyro-mean()-Y
+numeric	36	
+	123 tBodyGyro-mean()-Z
+numeric	36	Mean of the total body's angular velocity, measured in radians per second
+	124 tBodyGyro-std()-X
+numeric	36	
+	125 tBodyGyro-std()-Y
+numeric	36	
+	126 tBodyGyro-std()-Z
+numeric	36		Standard deviation of the total body's angular velocity, measured in radians per second
+	161 tBodyGyroJerk-mean()-X
+numeric	36	
+	162 tBodyGyroJerk-mean()-Y
+numeric	36		
+	163 tBodyGyroJerk-mean()-Z
+numeric	36		The mean of the jerk as measured by a gyro
+	164 tBodyGyroJerk-std()-X
+numeric	36		
+	165 tBodyGyroJerk-std()-Y
+numeric	36	
+	166 tBodyGyroJerk-std()-Z
+numeric	36	The standard deviation of the jerk as measured by the gyro
+	201 tBodyAccMag-mean()
+numeric	36	
+	202 tBodyAccMag-std()
+numeric	36	
+	214 tGravityAccMag-mean()
+numeric	36	The Euclidean norm was used to calculate the magnitude 
+	215 tGravityAccMag-std()
+numeric	36	The respective standard deviation 
+	227 tBodyAccJerkMag-mean()
+numeric	36	The Euclidean norm was used to calculate the magnitude 
+	228 tBodyAccJerkMag-std()
+numeric	36	The respective standard deviation 
+	240 tBodyGyroMag-mean()
+numeric	36	The Euclidean norm was used to calculate the magnitude 
+	241 tBodyGyroMag-std()
+numeric	36	The respective standard deviation	
+	253 tBodyGyroJerkMag-mean()
+numeric	36	The Euclidean norm was used to calculate the magnitude 
+	254 tBodyGyroJerkMag-std()
+numeric	36	The respective standard deviation
+	266 fBodyAcc-mean()-X
+numeric	36	
+	267 fBodyAcc-mean()-Y
+numeric	36	
+	268 fBodyAcc-mean()-Z
+numeric	36	Fourier transform	applied to produce this
+	269 fBodyAcc-std()-X
+numeric	36	
+	270 fBodyAcc-std()-Y
+numeric	36	
+	271 fBodyAcc-std()-Z
+numeric	36	Fourier transform	applied to produce this
+	294 fBodyAcc-meanFreq()-X
+numeric	36	
+	295 fBodyAcc-meanFreq()-Y
+numeric	36	
+	296 fBodyAcc-meanFreq()-Z
+numeric	36	Fourier transform	applied to produce this
+	345 fBodyAccJerk-mean()-X
+numeric	36		
+	346 fBodyAccJerk-mean()-Y
+numeric	36	
+	347 fBodyAccJerk-mean()-Z
+numeric	36	Fourier transform	applied to produce this
+	348 fBodyAccJerk-std()-X
+numeric	36	
+	349 fBodyAccJerk-std()-Y
+numeric	36		
+	350 fBodyAccJerk-std()-Z
+numeric	36	Fourier transform	applied to produce this	
+	373 fBodyAccJerk-meanFreq()-X
+numeric	36		
+	374 fBodyAccJerk-meanFreq()-Y
+numeric	36	
+	375 fBodyAccJerk-meanFreq()-Z
+numeric	36	Fourier transform	applied to produce this	
+	424 fBodyGyro-mean()-X
+numeric	36	
+	425 fBodyGyro-mean()-Y
+numeric	36	
+	426 fBodyGyro-mean()-Z
+numeric	36	Fourier transform	applied to produce this	
+	427 fBodyGyro-std()-X
+numeric	36		
+	428 fBodyGyro-std()-Y
+numeric	36		
+	429 fBodyGyro-std()-Z
+numeric	36	Fourier transform	applied to produce this
+	452 fBodyGyro-meanFreq()-X
+numeric	36	
+	453 fBodyGyro-meanFreq()-Y
+numeric	36	
+	454 fBodyGyro-meanFreq()-Z
+numeric	36	Fourier transform	applied to produce this	
+	503 fBodyAccMag-mean()
+numeric	36 Fourier transform	applied to produce this
+	504 fBodyAccMag-std()
+numeric	36 Fourier transform	applied to produce this
+	513 fBodyAccMag-meanFreq()
+numeric	36	Fourier transform	applied to produce this
+	516 fBodyBodyAccJerkMag-mean()
+numeric	36	Fourier transform	applied to produce this	
+	517 fBodyBodyAccJerkMag-std()
+numeric	36	Fourier transform	applied to produce this	
+	526 fBodyBodyAccJerkMag-meanFreq()
+numeric	36	Fourier transform	applied to produce this	
+	529 fBodyBodyGyroMag-mean()
+numeric	36	Fourier transform	applied to produce this	
+	530 fBodyBodyGyroMag-std()
+numeric	36	Fourier transform	applied to produce this	
+	539 fBodyBodyGyroMag-meanFreq()
+numeric	36	Fourier transform	applied to produce this	
+	542 fBodyBodyGyroJerkMag-mean()
+numeric	36	Fourier transform	applied to produce this
+	543 fBodyBodyGyroJerkMag-std()
+numeric	36  Fourier transform	applied to produce this
