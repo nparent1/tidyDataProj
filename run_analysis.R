@@ -38,4 +38,9 @@ activities <- gsub("6", "Laying", activities)
 filteredData[,"Activity Names"] <- activities
 
 #Now we have filtered data, must make second dataset
+tidyData <- aggregate(filteredData[,1:78], by = list(filteredData$`Activity Names`), mean)
+tidyDataSupplement <- aggregate(filteredData[,1:78], by = list(filteredData$`Subject`), mean)
+mergedTidyData <- merge(tidyData, tidyDataSupplement, all = TRUE)
+colnames(mergedTidyData)[1] <- "Subject/Activity"
 
+write.table(mergedTidyData, file = "tidyData.csv", row.names = FALSE, sep = ",")
