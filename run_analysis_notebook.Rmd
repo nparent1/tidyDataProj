@@ -1,0 +1,79 @@
+---
+title: "Tidy Data Project"
+output: html_notebook
+---
+
+The purpose of this project is to take a large messy dataset (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) and to put together a tidy dataframe which is read-able and contains some pertinent info.
+
+About the dataset:
+"The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data." So the goal of this is simply to merge the two datasets, and report just the mean and std, for all the individual subjects but also an overall mean for the respective activities.
+
+To run this code, it is best to clone the repo and then just run this file.
+
+
+This file lists all the features
+```{r}
+#Get the feature list which represents the values in the dataset
+features <- read.csv("UCI HAR Dataset/features.txt", header = FALSE, sep = "\n")
+head(features)
+```
+
+```{r}
+#Read in the test data and assign the columns to the features
+test <- read.csv("UCI HAR Dataset/test/X_test.txt", sep = "", header = FALSE)
+head(test)
+```
+```{r}
+colnames(test) <- features[,1]
+head(test)
+```
+
+```{r}
+#Add columns for the subject and activity names.
+actName <- read.csv("UCI HAR Dataset/test/y_test.txt", sep = "\n", header = FALSE)
+subject <- read.csv("UCI HAR Dataset/test/subject_test.txt", sep = "\n", header = FALSE)
+test[,"Activity Names"] <- actName
+test[,"Subject"] <- subject
+```
+```{r}
+#Read in the train data and assign the columns to the features
+train <- read.csv("UCI HAR Dataset/train/X_train.txt", sep = "", header = FALSE)
+colnames(train) <- features[,1]
+actName <- read.csv("UCI HAR Dataset/train/y_train.txt", sep = "\n", header = FALSE)
+subject <- read.csv("UCI HAR Dataset/train/subject_train.txt", sep = "\n", header = FALSE)
+train[,"Activity Names"] <- actName
+train[,"Subject"] <- subject
+```
+
+```{r}
+#Now must merge the two data sets
+mergedData <- merge(test, train, all = TRUE)
+
+meanAndStd <- grepl("mean|std|Activity Names|Subject", names(mergedData), fixed = FALSE)
+
+filteredData <- mergedData[,meanAndStd]
+
+head(filteredData)
+```
+```{r}
+#Replace the activity numbers with the actual name
+activities <- as.character(filteredData[,'Activity Names'])
+activities <- gsub("1", "Walking", activities)
+activities <- gsub("2", "Walking Upstairs", activities)
+activities <- gsub("3", "Walking Downstairs", activities)
+activities <- gsub("4", "Sitting", activities)
+activities <- gsub("5", "Standing", activities)
+activities <- gsub("6", "Laying", activities)
+filteredData[,"Activity Names"] <- activities
+```
+```{r}
+#Now we have filtered data, must make second dataset
+tidyData <- aggregate(filteredData[,1:78], by = list(filteredData$`Activity Names`), mean)
+tidyDataSupplement <- aggregate(filteredData[,1:78], by = list(filteredData$`Subject`), mean)
+mergedTidyData <- merge(tidyData, tidyDataSupplement, all = TRUE)
+colnames(mergedTidyData)[1] <- "Subject/Activity"
+
+tidyDataSorted <- mergedTidyData[order(as.numeric(mergedTidyData$`Subject/Activity`)),]
+write.table(tidyDataSorted, file = "tidyData.csv", row.names = FALSE, sep = ",")
+```
+
