@@ -16,3 +16,5 @@ I chose to output to a csv file, so it could be easily viewed in excel. The firs
 the averages for a subject or an activity. Then, across the row, each column represents a different variable being averaged
 over said factor. I chose to keep the numbers in the label for crossreferencing with the original data set. I output using 
 write.table() and sorted using order().
+
+See run_analysis_notebook.pdf for a walkthrough of code.
